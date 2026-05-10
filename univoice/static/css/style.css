@@ -1,0 +1,609 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #f1f5f9;
+    color: #1e293b;
+}
+
+/* GLOBAL CONTAINER */
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+}
+
+/* HEADER */
+.main-header {
+    background: #0f172a;
+    color: #fff;
+    padding: 16px 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo h2 {
+    font-size: 20px;
+}
+
+.logo span {
+    font-size: 12px;
+    color: #94a3b8;
+}
+
+.nav-links a {
+    margin-left: 20px;
+    color: #e2e8f0;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.nav-links a:hover {
+    color: #38bdf8;
+}
+
+.logout-btn {
+    color: #f87171;
+}
+
+/* MAIN */
+.main-content {
+    padding: 40px 0;
+    min-height: 80vh;
+}
+
+/* FLASH */
+.flash-container {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto 20px;
+}
+
+.flash {
+    padding: 12px;
+    border-radius: 6px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.flash.success {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.flash.error {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+/* DASHBOARD */
+.dashboard-container {
+    max-width: 1000px;
+    margin: auto;
+}
+
+.dashboard-header {
+    margin-bottom: 25px;
+}
+
+.dashboard-header h2 {
+    font-size: 22px;
+    margin-bottom: 5px;
+}
+
+.dashboard-header p {
+    font-size: 14px;
+    color: #64748b;
+}
+
+/* FILTER BAR */
+.filter-bar {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.search-input,
+.filter-select {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #cbd5f5;
+    font-size: 14px;
+}
+
+/* ISSUE GRID */
+.issue-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px;
+}
+
+/* ISSUE CARD */
+.issue-card {
+    background: #fff;
+    padding: 18px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: 0.2s;
+}
+
+.issue-card:hover {
+    transform: translateY(-3px);
+}
+
+/* TOP ROW */
+.issue-top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.category-badge {
+    background: #e0f2fe;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+}
+
+.status-badge {
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    color: #fff;
+}
+
+.status-new { background: #64748b; }
+.status-under-review { background: #f59e0b; }
+.status-in-progress { background: #3b82f6; }
+.status-resolved { background: #10b981; }
+
+/* BODY */
+.issue-body {
+    margin: 12px 0;
+    font-size: 14px;
+    color: #334155;
+}
+
+/* META */
+.issue-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    margin-bottom: 12px;
+}
+
+.priority {
+    font-weight: 600;
+}
+
+.tone-urgent { color: #dc2626; }
+.tone-neutral { color: #64748b; }
+.tone-negative { color: #f97316; }
+
+/* ACTIONS */
+.issue-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.vote-btn,
+.remove-btn,
+.details-btn {
+    flex: 1;
+    text-align: center;
+    padding: 7px;
+    border-radius: 6px;
+    font-size: 13px;
+    text-decoration: none;
+    color: #fff;
+}
+
+.vote-btn { background: #16a34a; }
+.remove-btn { background: #ef4444; }
+.details-btn { background: #3b82f6; }
+
+/* EMPTY STATE */
+.no-data {
+    text-align: center;
+    padding: 40px;
+    background: #fff;
+    border-radius: 10px;
+    color: #64748b;
+}
+
+/* SUBMIT */
+.submit-container {
+    max-width: 600px;
+    margin: auto;
+}
+
+.submit-card {
+    background: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+/* DETAIL PAGE */
+.detail-container {
+    max-width: 800px;
+    margin: auto;
+}
+
+.detail-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.detail-meta {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.detail-actions {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+}
+
+/* TIMELINE */
+.timeline {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.timeline-step {
+    padding: 8px 12px;
+    border-radius: 6px;
+    background: #e2e8f0;
+    font-size: 12px;
+}
+
+.timeline-step.active {
+    background: #3b82f6;
+    color: #fff;
+}
+
+/* FOOTER */
+.main-footer {
+    background: #0f172a;
+    color: #cbd5f5;
+    text-align: center;
+    padding: 15px 0;
+}
+
+.footer-links a {
+    margin: 0 8px;
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 13px;
+}
+/* SUBMIT PAGE HEADER */
+.submit-header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.submit-header h2 {
+    font-size: 22px;
+    margin-bottom: 5px;
+}
+
+.submit-header p {
+    font-size: 14px;
+    color: #64748b;
+}
+
+/* FORM CARD IMPROVEMENT */
+.submit-card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+}
+
+/* FORM GROUP SPACING */
+.form-group {
+    margin-bottom: 18px;
+}
+
+/* LABEL */
+.form-group label {
+    font-size: 14px;
+    margin-bottom: 6px;
+    display: block;
+    font-weight: 500;
+}
+
+/* INPUTS */
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #cbd5f5;
+    font-size: 14px;
+    background: #f8fafc;
+}
+
+/* TEXTAREA */
+.form-group textarea {
+    resize: none;
+}
+
+/* FILE INPUT */
+.form-group input[type="file"] {
+    background: #fff;
+}
+
+/* BUTTON AREA */
+.form-actions {
+    margin-top: 10px;
+}
+
+/* SUBMIT BUTTON */
+.btn-primary {
+    width: 100%;
+    padding: 12px;
+    background: #2563eb;
+    border: none;
+    color: #fff;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-primary:hover {
+    background: #1d4ed8;
+}
+/* ===== DASHBOARD CENTER FIX ===== */
+.dashboard-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* ===== ISSUE LIST CENTER ===== */
+.issue-list {
+    display: flex;
+    justify-content: center;
+}
+
+/* ===== ISSUE CARD IMPROVEMENT ===== */
+.issue-card {
+    width: 400px;
+    padding: 20px;
+    border-radius: 12px;
+    background: #ffffff;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    transition: 0.3s;
+}
+
+.issue-card:hover {
+    transform: translateY(-5px);
+}
+
+/* ===== CATEGORY BADGE ===== */
+.category-badge {
+    background: #dbeafe;
+    color: #1e40af;
+    font-weight: 500;
+}
+
+/* ===== STATUS BADGE ===== */
+.status-badge {
+    font-size: 11px;
+    padding: 5px 10px;
+    border-radius: 20px;
+}
+
+/* ===== ISSUE TEXT ===== */
+.issue-body p {
+    font-size: 15px;
+    font-weight: 500;
+    color: #1e293b;
+}
+
+/* ===== META ALIGNMENT ===== */
+.issue-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* ===== PRIORITY STYLE ===== */
+.priority {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* ===== TONE ===== */
+.tone {
+    font-size: 12px;
+}
+
+/* ===== BUTTONS FIX ===== */
+.issue-actions {
+    margin-top: 12px;
+    display: flex;
+    gap: 10px;
+}
+
+/* VOTE BUTTON */
+.vote-btn {
+    flex: 1;
+    background: #16a34a;
+    text-align: center;
+    padding: 8px;
+    border-radius: 8px;
+}
+
+/* REMOVE BUTTON */
+.remove-btn {
+    flex: 1;
+    background: #ef4444;
+    text-align: center;
+    padding: 8px;
+    border-radius: 8px;
+}
+
+/* DETAILS BUTTON */
+.details-btn {
+    flex: 1;
+    background: #2563eb;
+    text-align: center;
+    padding: 8px;
+    border-radius: 8px;
+}
+
+/* BUTTON HOVER */
+.vote-btn:hover {
+    background: #15803d;
+}
+
+.remove-btn:hover {
+    background: #dc2626;
+}
+
+.details-btn:hover {
+    background: #1d4ed8;
+}
+/* ===== AUTH PAGE CENTER FIX ===== */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+}
+
+/* ===== AUTH CARD ===== */
+.auth-card {
+    width: 100%;
+    max-width: 420px;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+/* ===== AUTH HEADER ===== */
+.auth-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.auth-header h2 {
+    font-size: 22px;
+    margin-bottom: 5px;
+}
+
+.auth-header p {
+    font-size: 14px;
+    color: #64748b;
+}
+
+/* ===== FORM INPUT FIX ===== */
+.auth-card .form-group input {
+    background: #f8fafc;
+}
+
+/* ===== LOGIN BUTTON ===== */
+.auth-card .btn-primary {
+    margin-top: 10px;
+}
+
+/* ===== FOOTER TEXT ===== */
+.auth-footer {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.auth-footer a {
+    color: #2563eb;
+    text-decoration: none;
+}
+/* ===== ADMIN DASHBOARD ===== */
+.admin-container {
+    max-width: 1000px;
+    margin: auto;
+}
+
+/* SUMMARY CARDS */
+.admin-summary {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.summary-card {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.summary-card h3 {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.summary-card p {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+/* ADMIN ISSUE CARD */
+.admin-issue-card {
+    background: #ffffff;
+    padding: 18px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+/* ADMIN ACTION BUTTONS */
+.admin-actions {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+.admin-actions a {
+    padding: 6px 10px;
+    border-radius: 6px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+/* BUTTON COLORS */
+.btn-review {
+    background: #f59e0b;
+}
+
+.btn-progress {
+    background: #3b82f6;
+}
+
+.btn-resolve {
+    background: #10b981;
+}
