@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="dashboard-container">
+
+    <!-- HEADER -->
+    <div class="dashboard-header">
+        <h2>Student Dashboard</h2>
+        <p>Track issues, vote, and follow important concerns</p>
+    </div>
+
+
+    <!-- FILTER BAR -->
+    <div class="filter-bar">
+
+        <input type="text" placeholder="Search issues..." class="search-input">
+
+        <select class="filter-select">
+            <option value="">All Categories</option>
+            <option>Academics</option>
+            <option>Facilities</option>
+            <option>Safety</option>
+            <option>Campus Life</option>
+        </select>
+
+        <select class="filter-select">
+            <option value="priority">Sort by Priority</option>
+            <option value="latest">Latest</option>
+            <option value="votes">Most Voted</option>
+        </select>
+
+    </div>
+
+
+    <!-- ISSUE LIST -->
+    <div class="issue-list">
+
+        {% if issues %}
+
+            {% for issue in issues %}
+
+            <div class="issue-card">
+
+                <!-- TOP ROW -->
+                <div class="issue-top">
+
+                    <span class="category-badge">
+                        Category {{ issue.category_id }}
+                    </span>
+
+                    <span class="status-badge status-{{ issue.status | lower | replace(' ', '-') }}">
+                        {{ issue.status }}
+                    </span>
+
+                </div>
+
+
+                <!-- DESCRIPTION -->
+                <div class="issue-body">
+                    <p>{{ issue.description }}</p>
+                </div>
+
+
+                <!-- META -->
+                <div class="issue-meta">
+
+                    <span class="priority">
+                        Priority: {{ issue.priority_score }}
+                    </span>
+
+                    <span class="tone tone-{{ issue.tone }}">
+                        {{ issue.tone }}
+                    </span>
+
+                </div>
+
+
+                <!-- ACTIONS -->
+                <div class="issue-actions">
+
+                    <a href="/vote/{{ issue.id }}" class="vote-btn">
+                        Vote
+                    </a>
+
+                    <a href="/remove_vote/{{ issue.id }}" class="remove-btn">
+                        Remove
+                    </a>
+
+                    <a href="/issue/{{ issue.id }}" class="details-btn">
+                        View Details
+                    </a>
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        {% else %}
+
+            <div class="no-data">
+                <p>No issues found. Be the first to raise a concern.</p>
+            </div>
+
+        {% endif %}
+
+    </div>
+
+</div>
+
+{% endblock %}

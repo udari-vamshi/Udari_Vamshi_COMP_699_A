@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="submit-container">
+
+    <!-- HEADER -->
+    <div class="submit-header">
+        <h2>Submit an Issue</h2>
+        <p>Share your concern anonymously and help improve campus life</p>
+    </div>
+
+
+    <!-- FORM CARD -->
+    <div class="submit-card">
+
+        <form method="POST" action="/submit_issue" enctype="multipart/form-data">
+
+            <!-- CATEGORY -->
+            <div class="form-group">
+                <label>Select Category</label>
+                <select name="category" required>
+                    <option value="">Choose category</option>
+
+                    {% for cat in categories %}
+                        <option value="{{ cat.id }}">{{ cat.name }}</option>
+                    {% endfor %}
+
+                </select>
+            </div>
+
+
+            <!-- DESCRIPTION -->
+            <div class="form-group">
+                <label>Issue Description</label>
+                <textarea name="description" rows="5" placeholder="Describe your issue clearly..." required></textarea>
+            </div>
+
+
+            <!-- IMAGE -->
+            <div class="form-group">
+                <label>Attach Image (optional)</label>
+                <input type="file" name="image">
+            </div>
+
+
+            <!-- BUTTON -->
+            <div class="form-actions">
+                <button type="submit" class="btn-primary">Submit Issue</button>
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>UniVoice - Smart Campus Feedback</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="main-header">
+        <div class="container">
+
+            <div class="logo">
+                <h2>UniVoice</h2>
+                <span>Smart Campus Feedback</span>
+            </div>
+
+            <nav class="nav-links">
+                <a href="/student/dashboard">Dashboard</a>
+                <a href="/submit_issue">Submit Issue</a>
+                <a href="/logout" class="logout-btn">Logout</a>
+            </nav>
+
+        </div>
+    </header>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <!-- FLASH MESSAGES -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flash-container">
+                    {% for category, message in messages %}
+                        <div class="flash {{ category }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <!-- PAGE CONTENT -->
+        {% block content %}{% endblock %}
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="main-footer">
+        <div class="container">
+
+            <p>© 2026 UniVoice | Developed by Vamshi Udari</p>
+
+            <div class="footer-links">
+                <a href="#">About</a>
+                <a href="#">Support</a>
+                <a href="#">Privacy</a>
+            </div>
+
+        </div>
+    </footer>
+
+</body>
+</html>

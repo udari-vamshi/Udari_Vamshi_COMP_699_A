@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="admin-container">
+
+    <!-- HEADER -->
+    <div class="admin-header">
+        <h2>Admin Dashboard</h2>
+        <p>Manage issues, monitor priorities, and take action</p>
+    </div>
+
+
+    <!-- SUMMARY -->
+    <div class="admin-summary">
+
+        <div class="summary-card">
+            <h3>Total Issues</h3>
+            <p>{{ issues|length }}</p>
+        </div>
+
+        <div class="summary-card">
+            <h3>High Priority</h3>
+            <p>
+                {{ issues | selectattr('priority_score', 'gt', 5) | list | length }}
+            </p>
+        </div>
+
+        <div class="summary-card">
+            <h3>Urgent Issues</h3>
+            <p>
+                {{ issues | selectattr('tone', 'equalto', 'urgent') | list | length }}
+            </p>
+        </div>
+
+    </div>
+
+
+    <!-- ISSUE LIST -->
+    <div class="admin-issue-list">
+
+        {% if issues %}
+
+            {% for issue in issues %}
+
+            <div class="admin-issue-card">
+
+                <!-- TOP -->
+                <div class="admin-top">
+                    <span class="category-badge">
+                        Category {{ issue.category_id }}
+                    </span>
+
+                    <span class="status-badge status-{{ issue.status | lower | replace(' ', '-') }}">
+                        {{ issue.status }}
+                    </span>
+                </div>
+
+
+                <!-- DESCRIPTION -->
+                <div class="admin-body">
+                    <p>{{ issue.description }}</p>
+                </div>
+
+
+                <!-- META -->
+                <div class="admin-meta">
+                    <span>Priority: {{ issue.priority_score }}</span>
+                    <span class="tone tone-{{ issue.tone }}">{{ issue.tone }}</span>
+                    <span>Cluster: {{ issue.cluster_id }}</span>
+                </div>
+
+
+                <!-- ACTIONS -->
+                <div class="admin-actions">
+
+                    <a href="/admin/update/{{ issue.id }}/Under Review" class="btn-review">
+                        Review
+                    </a>
+
+                    <a href="/admin/update/{{ issue.id }}/In Progress" class="btn-progress">
+                        In Progress
+                    </a>
+
+                    <a href="/admin/update/{{ issue.id }}/Resolved" class="btn-resolve">
+                        Resolve
+                    </a>
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        {% else %}
+
+            <div class="no-data">
+                <p>No issues available for review.</p>
+            </div>
+
+        {% endif %}
+
+    </div>
+
+</div>
+
+{% endblock %}

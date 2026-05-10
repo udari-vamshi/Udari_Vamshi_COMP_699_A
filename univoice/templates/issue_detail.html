@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="detail-container">
+
+    <div class="detail-header">
+        <h2>Issue Details</h2>
+        <p>Track status, priority and engagement</p>
+    </div>
+
+    <div class="detail-card">
+
+        <!-- TOP -->
+        <div class="detail-top">
+            <span class="category-badge">
+                Category {{ issue.category_id }}
+            </span>
+
+            <span class="status-badge status-{{ issue.status | lower }}">
+                {{ issue.status }}
+            </span>
+        </div>
+
+        <!-- DESCRIPTION -->
+        <div class="detail-body">
+            <p>{{ issue.description }}</p>
+        </div>
+
+        <!-- META -->
+        <div class="detail-meta">
+
+            <div class="meta-item">
+                <label>Priority</label>
+                <span>{{ issue.priority_score }}</span>
+            </div>
+
+            <div class="meta-item">
+                <label>Tone</label>
+                <span class="tone tone-{{ issue.tone }}">
+                    {{ issue.tone }}
+                </span>
+            </div>
+
+            <div class="meta-item">
+                <label>Cluster</label>
+                <span>{{ issue.cluster_id }}</span>
+            </div>
+
+        </div>
+
+        <!-- IMAGE -->
+        {% if issue.image %}
+        <div class="detail-image">
+            <img src="{{ url_for('static', filename='uploads/' + issue.image) }}">
+        </div>
+        {% endif %}
+
+        <!-- ACTIONS -->
+        <div class="detail-actions">
+
+            <a href="/vote/{{ issue.id }}" class="vote-btn">Vote</a>
+
+            <a href="/remove_vote/{{ issue.id }}" class="remove-btn">
+                Remove Vote
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- TIMELINE -->
+    <div class="timeline-card">
+
+        <h3>Status Timeline</h3>
+
+        <div class="timeline">
+
+            <div class="timeline-step {% if issue.status == 'New' %}active{% endif %}">
+                New
+            </div>
+
+            <div class="timeline-step {% if issue.status == 'Under Review' %}active{% endif %}">
+                Under Review
+            </div>
+
+            <div class="timeline-step {% if issue.status == 'In Progress' %}active{% endif %}">
+                In Progress
+            </div>
+
+            <div class="timeline-step {% if issue.status == 'Resolved' %}active{% endif %}">
+                Resolved
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
